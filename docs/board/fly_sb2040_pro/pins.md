@@ -1,76 +1,76 @@
-# 6. 引脚分布
+# 6. pin distribution
 
-## 6.1 SB2040-PRO引脚
+## 6.1 SB2040-PRO pins
 
 ![SB2040 v2 Pinout](../../images/boards/fly_sb2040_pro/pinout.jpg ":no-zooom")
 
 
 
-### 6.2 通信
+### 6.2 Communication
 
 * CANBUS
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
 | RX | ***gpio4*** |
 | TX | ***gpio5*** |
 
-### 6.3 步进电机驱动部分
+### 6.3 步进电视电视电视
 
-* E电机
+* Electric motors
 
-| 驱动 | 功能 | 引脚号 |
+| drive | function | 电影号 |
 | :----: | :----: | :----- |
-| E | EN | ***gpio7*** |
-| E | STEP | ***gpio9*** |
-| E | DIR | ***gpio10*** |
-| E | CS | ***gpio8*** |
+| E| EN | ***gpio7*** |
+| E| STEP | ***gpio9*** |
+| E| DIR | ***gpio10*** |
+| E| CS | ***gpio8*** |
 
-* E电机
-| SPI | 引脚号 |
+* Electric motors
+| SPI | 电影号 |
 | :----: | :----- |
 | SCLK | ***gpio0*** |
 | MOSI | ***gpio3*** |
 | MISO | ***gpio2*** |
 
-### 6.4 限位
+### 6.4 Limitations
 
-| 限位 | 引脚号 |
+| 限位 | 电影号 |
 | :----: | :----- |
 | 1 | ***gpio28*** |
 | 2 | ***gpio29*** |
 | 3 | ***gpio25*** |
 
-### 6.5 加热控制
+### 6.5 heating control
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
-| 挤出加热 | ***gpio6*** |
+| 新出电视 | ***gpio6*** |
 
-### 6.6 温度传感器
+### 6.6 Temperature sensor
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
-| 挤出温度 | ***gpio27*** |
-| 板载NTC | ***gpio26*** |
+| 新出水水 | ***gpio27*** |
+| 板自NTC | ***gpio26*** |
 
-### 6.7 风扇
+### 6.7 fan
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
-| 风扇0 | ***gpio13*** |
-| 风扇1 | ***gpio14*** |
-| 风扇2 | ***gpio15*** |
+| fan0 | ***gpio13*** |
+| fan1 | ***gpio14*** |
+| fan2 | ***gpio15*** |
 
 ### 6.8 RGB
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
 | RGB1 | ***gpio12*** |
 
-## 6.9 加速度计
+## 6.9 Acceleration
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
 | MISO | ***gpio2*** |
 | MOSI | ***gpio3*** |
@@ -81,9 +81,9 @@
 
 ----
 
-## 6.10 MAX31865 
+## 6.10 MAX31865
 
-| 功能 | 引脚号 |
+| function | 电影号 |
 | :----: | :----- |
 | MISO | ***gpio23*** |
 | MOSI | ***gpio19*** |
