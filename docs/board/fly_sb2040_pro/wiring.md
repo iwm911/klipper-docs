@@ -1,149 +1,146 @@
-# 2. SB2040-Pro接线
+# 2. SB2040-Pro wiring
 
 > [!TIP]
-> 2240驱动上可以贴一个散热片
+> A heat sink can be attached to the 2240 driver
 
-## 2.1 接线图
+## 2.1 Wiring diagram
 
 ### 2.1 SB2040-Pro
 
 ![pinout](../../images/boards/fly_sb2040_pro/pinout.jpg)
 
-## 2.2 终端电阻配置
+## 2.2 Terminal resistor configuration
 
 > [!TIP]
-> 使用CAN之前，请正确配置CANBUS终端电阻。
+> Before using CAN, please configure the CANBUS terminal resistor correctly.
 
-* CANBUS总线协议一条总线中必须且只能有两个120欧姆电阻
-*  不管你连接几个USB设备，只要是在一条总线就只配置两个120欧姆电阻。不用为每个设备加一个电阻
-* 在接好CAN H和CAN L信号线之后，使用万用表测量CAN H与CAN L，两者之间的阻值应约为60欧姆
+* CANBUS bus protocol must and can only have two 120 ohm resistors in a bus
+* No matter how many USB devices you connect, only configure two 120 ohm resistors on one bus. No need to add a resistor to each device
+* After connecting the CAN H and CAN L signal lines, use a multimeter to measure CAN H and CAN L. The resistance between them should be about 60 ohms.
 
 ![120Ω](../../images/boards/fly_sb2040_pro/120Ω.png)
 
-## 2.3 电源接线
+## 2.3 Power wiring
 
 
 > [!TIP]
-> SB2040 Pro不支持电源防反接功能，通电前请检查好电源正负极接线是否正确！！！否则会损坏SB2040 Pro工具板！！！！
+> SB2040 Pro does not support the anti-reverse connection function of the power supply. Please check whether the positive and negative poles of the power supply are connected correctly before powering on! ! ! Otherwise, the SB2040 Pro tool board will be damaged! ! ! !
 
-* SB2040 Pro的线材颜色
+* Cable color of SB2040 Pro
 
-| 颜色 | 功能                 |
+| Color | Function |
 | :--: | :------------------- |
-| 红色 | ***直流12/24v输入*** |
-| 黑色 | ***直流负极(GND)***  |
-| 黄色 | ***CAN H***          |
-| 白色 | ***CAN L***          |
+| Red | ***DC 12/24v input*** |
+| Black | ***DC Negative Pole (GND)*** |
+| Yellow | ***CAN H*** |
+| White | ***CAN L*** |
 
 <img src="../../images/boards/fly_sb2040_pro/power.png" alt="power" style="zoom:80%;" />
 
-## 2.4 加热棒接线
+## 2.4 Heating rod wiring
 
-加热棒支持最大10A的电流，使用时请注意加热棒的功率！
+The heating rod supports a maximum current of 10A, please pay attention to the power of the heating rod when using it!
 
 ![heater](../../images/boards/fly_sb2040_pro/heater.png)
 
-## 2.5 普通热敏与PT1000的接线方法
+## 2.5 Connection method between ordinary thermal and PT1000
 
-下图为普通热敏和**PT1000**的接线方法。
+The figure below shows the wiring method of ordinary thermal and **PT1000**.
 
 <img src="../../images/boards/fly_sb2040_pro/thermistor.png" alt="thermistor" style="zoom:80%;" />
 
-## 2.5.1 PT100接线
+## 2.5.1 PT100 wiring
 
 > [!Tip]
 >
-> 请确定购买的工具板是否带**31865芯片**
+> Please make sure whether the tool board you purchased comes with **31865 chip**
 >
-> **PT100**的接线方法，两线的PT100连接到中间两个引脚
+> **PT100** wiring method, the two-wire PT100 is connected to the two middle pins
 
 <img src="../../images/boards/fly_sb2040_pro/sb2040v2_pt100.png" alt="sb2040v2_pt100" style="zoom:90%;" />
 
-## 2.6 风扇接线
+## 2.6 Fan wiring
 
-SB2040支持最多两个可控风扇，风扇电压可选24V、5V，支持2、3、4线风扇，接线方法如下。
+SB2040 supports up to two controllable fans. The fan voltage can be selected from 24V or 5V. It supports 2, 3, and 4-wire fans. The wiring method is as follows.
 
 > [!TIP]
-> 三线风扇第三根线一般为测速线，可不接，直接两根电源线，接线方法和两线风扇是一样的。
+> The third wire of a three-wire fan is usually a speed measuring wire. It can be left alone and connected directly to the two power wires. The wiring method is the same as that of a two-wire fan.
 
 <img src="../../images/boards/fly_sb2040_pro/2_3-fan.png" alt="2_3-fan" style="zoom:65%;" />
 
 <img src="../../images/boards/fly_sb2040_pro/4-fan.png" alt="4-fan" style="zoom:65%;" />
 
-## 2.7 RGB接线
+## 2.7 RGB wiring
 
-RGB灯珠的正负极千万不能接反，否则会损坏CAN工具板。
+The positive and negative poles of the RGB lamp beads must not be connected reversely, otherwise the CAN tool board will be damaged.
 
 <img src="../../images/boards/fly_sb2040_pro/RGB.png" alt="RGB" style="zoom:65%;" />
 
-## 2.8  挤出机接线
+## 2.8 Extruder wiring
 
-挤出机接线完成后，请注意配置好驱动电流，校准好挤出机电机转向。
+After the extruder wiring is completed, please pay attention to configure the drive current and calibrate the extruder motor steering.
 
 ![extruder](../../images/boards/fly_sb2040_pro/extruder.png)
 
-## 2.9 限位开关
+## 2.9 Limit switch
 
-限位开关有常开（NO）和常闭（NC）两种。一般在3D打印机上，建议使用常闭（NC）， 这样在限位开关线路出现问题时，系统会及时报错，可以避免一些不必要的撞车，避免损坏 打印机。
+There are two types of limit switches: normally open (NO) and normally closed (NC). Generally on 3D printers, it is recommended to use normally closed (NC), so that when there is a problem with the limit switch circuit, the system will report an error in time, which can avoid unnecessary crashes and damage to the printer.
 
-如果为VORON机型，可以考虑更换限位的安装位置，在打印头滑车上安装X限位开关，A电机座上安装Y限位开关。另外，在SB2040上，建议限位开关前最好加上``^``，将信号上拉。例如：
+If it is a VORON model, you can consider changing the installation position of the limit, installing an X limit switch on the print head trolley, and installing a Y limit switch on the A motor base. In addition, on SB2040, it is recommended to add ``^`` before the limit switch to pull up the signal. For example:
 
 ```bash
 [stepper_x]
-endstop_pin: ^sb2040:PA0  # 在前面加上^,将信号上拉
+endstop_pin: ^sb2040:PA0 # Add ^ in front to pull up the signal
 ```
 
 ![endstop](../../images/boards/fly_sb2040_pro/endstop.png)
 
-##  2.10 调平传感器接线
+## 2.10 Leveling sensor wiring
 
-### 2.10.1 接近开关
+### 2.10.1 Proximity switch
 
-VORON 官方建议是使用欧姆龙 Omron TL-Q5MC（之前官方推荐的是 PL08N，两者原 理一样，只是探测距离不一样）传感器来进行热床调平。
+VORON’s official recommendation is to use Omron TL-Q5MC (the previous official recommendation was PL08N, the two have the same principle, but the detection distance is different) sensor for hot bed leveling.
 
 ![pl08](../../images/boards/fly_sb2040_pro/pl08.png)
 
 ### 2.10.2 Klicky
 
-Klicky 为第三方的调平传感器，能够用极低的成本自己在家制作，且性能稳定，性价比非常高，推荐使用。接线方法如下图所示。
+Klicky is a third-party leveling sensor that can be made at home at a very low cost. It has stable performance and is very cost-effective. It is recommended to use. The wiring method is shown in the figure below.
 
 ![klicky](../../images/boards/fly_sb2040_pro/klicky.png)
 
 ### 2.10.3 Voron Tap
 
-Voron Tap为Voron团队最新发布的调平传感器方案，有着精度高，稳定性强，适应性好等特点。接线时，请注意正负极不能接反，否则会损坏Tap传感器甚至SHT工具板。
+Voron Tap is the latest leveling sensor solution released by the Voron team. It has the characteristics of high accuracy, strong stability and good adaptability. When wiring, please be careful not to reverse the positive and negative poles, otherwise the Tap sensor or even the SHT tool board will be damaged.
 
 > [!TIP]
-> Voron Tap不建议接 **24V** ，某些版本使用 **24V** 有一定概率会导致Tap传感器烧坏，这并非Fly产品的问题，是Voron Tap的设计缺陷，请悉知！！！
+> Voron Tap is not recommended to be connected to **24V**. Using **24V** in some versions has a certain probability of causing the Tap sensor to burn out. This is not a problem with Fly products, but a design defect of Voron Tap. Please be informed! ! !
 
 ![tap](../../images/boards/fly_sb2040_pro/tap.png)
 
 ### 2.10.4 Bltouch
 
-BL-touch 一共有五根线，三根为第一组，负责传感器的供电和探针的收放，第二组为地线 和信号线，输出限位信号。BL-touch 接线时请仔细核对接线顺序，错误的接线可能会永久性损坏 传感器和主板！！！接线方法如下图所示。
+BL-touch has a total of five wires. The first group of three wires is responsible for the power supply of the sensor and the retraction and retraction of the probe. The second group is the ground wire and signal wire, which outputs the limit signal. Please check the wiring sequence carefully when wiring BL-touch. Wrong wiring may permanently damage the sensor and main board! ! ! The wiring method is shown in the figure below.
 
 ![bltouch](../../images/boards/fly_sb2040_pro/bltouch.png)
 
 > [!TIP]
-> **使用Bltouch需要拆掉此电容！！**
+> **This capacitor needs to be removed to use Bltouch! ! **
 
 ![touch](../../images/boards/fly_sb2040_pro/touch.png)
 
-## 2.11 SB2040连接UTOC
+## 2.11 SB2040 connected to UTOC
 
-FLY UTOC是一款USB转CAN总线的模块，通过它将FLY π的USB端口专为CAN总线，通过CAN总线连接3D打印主板、SB2040等CAN总线产品。FLY UTOC板上拥有多种端子接口，使用灵活性好，可以适配不同的使用场景。**另外，UTOC在出厂时已经刷好固件，到手即用，无需再刷写固件。**
+FLY UTOC is a USB-to-CAN bus module. Through it, the USB port of FLY π is designed for CAN bus, and it can connect to 3D printing motherboards, SB2040 and other CAN bus products through the CAN bus. The FLY UTOC board has a variety of terminal interfaces, which has good flexibility and can be adapted to different usage scenarios. **In addition, the firmware of UTOC has been flashed when it leaves the factory, so it can be used immediately, and there is no need to flash the firmware again. **
 
 ![utoc](../../images/boards/fly_sb2040_pro/utoc.png)
 
 ![utoc2](../../images/boards/fly_sb2040_pro/utoc2.png)
 
-**USB-IN:** USB转CAN输入接口，连接到上位机
+**USB-IN:** USB to CAN input interface, connected to the host computer
 
-**12-24v & GND:** 电源接口
+**12-24v & GND:** Power interface
 
-**CANBUS:** CAN接口，连接到扩展主板和工具板等(连接到有板载CAN收发芯片的设备)
+**CANBUS:** CAN interface, connected to expansion motherboards and tool boards (connected to devices with onboard CAN transceiver chips)
 
-**CANBUS\*:** CAN接口，连接到扩展主板和工具板等(仅限连接到STM32设备的USB接口[PA11,PA12],请注意购买相应版本的UTOC)
-
-
-
+**CANBUS\*:** CAN interface, connected to expansion motherboards and tool boards, etc. (only USB interface [PA11, PA12] connected to STM32 devices, please pay attention to purchase the corresponding version of UTOC)
