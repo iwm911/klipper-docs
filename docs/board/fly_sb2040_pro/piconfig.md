@@ -1,66 +1,66 @@
-# 3. 上位机配置
+# 3. Host configuration
 
-## 3.1 非FLY上位机检测
+## 3.1 非FLY 这是机正视
 
 > [!TIP]
-> 此操作针对非FLY上位机，FLY上位机无需执行这一步操作
+> This operation is not applicable to FLY’s high-end machine，FLY’s high-end machine does not need to perform this operation
 
-非FLY上位机的，请注意检查自己烧录的镜像内核是否支持CAN，如果不支持则无法使用CAN。检测方法如下。
+非FLY’s host machine, please note that it checks whether the mirror image of the self-recorded kernel supports CAN, if it does not support it, it cannot use CAN.
 
-在SSH输入：
+Type in SSH:
 
 ```bash
-sudo modprobe can && echo "您的内核支持CAN" || echo "您的内核不支持CAN"
+sudo modprobe can && echo "தியுக்கு க்குக்க்குக்குகைCAN" || echo "Your kernel does not support CAN"
 ```
 
-输入以上指令后，如果您的内核支持CAN就会返回：``您的内核支持CAN``；如果不支持就会返回：``您的内核不支持CAN``。
+Enter the above instructions, if your kernel supports CAN, it will return to you: ``your kernel supports CAN''; if you don't support it, it will return to you: ``your kernel does not support CAN''.
 
 > [!TIP]
-> FLY上位机，FLY已为您完成所有配置工作，您只需确保镜像烧录正确即可。镜像烧录请查看：[系统镜像烧录](/board/fly_pi/mirror/FLY_π_mirror  "点击即可跳转")
+> FLY 电视机，FLY已手机电影长像烧烧工作，您模手安全长像烧像正生设计。部像烧像方法这些：[电视部像烧像](/board/fly_pi/mirror/FLY_π_mirror "热像烧像" click here 跳车")
 
-## 3.2 非FLY上位机配置
+## 3.2 Non-FLY computer configuration
 
-> 当前文档不仅适用于树莓派，香橙派等等其他设备同理
-
-> [!TIP]
-> 注意：目前收到很多反馈，都是CAN缓冲区设置太小，导致数据无法及时交换。从而导致Klipper报错。请将CAN缓冲区设置为1024
-
-### 3.2.1 准备
-
-1. 启动树莓派并确保其连接到网络
-2. 使用你熟悉的SSH终端工具连接到树莓派
-3. 如果登录到了root账户请切换到普通用户
-
-### 3.2.2 系统配置
+> The current document is not only applicable to 树莓派，香橙派 etc. other equipment同理
 
 > [!TIP]
-> 注意：使用SPI转CAN(MCP215)等设备时建议设置bitrate为250000
+> Note：Previously, I received a lot of feedback, and the CAN buffer is set to 1024.
 
-1. 执行下面的命令安装当前文档所需软件包
+### 3.2.1 preparation
+
+1. 电影树莓派上安全其电影电视
+2. Use your familiar SSH terminal tool to connect to 树莓派
+3. If you are logged in to the root account, please switch to the ordinary user
+
+### 3.2.2 System configuration
+
+> [!TIP]
+> Note：Use SPI transCAN(MCP215) etc. equipment when the recommended bitrate is 250000
+
+1. Execute the following command to install the current document required software package
 
 ```bash
 sudo apt update && sudo apt install nano wget -y
 ```
 
-2. 创建配置文件,复制粘贴到终端并回车
+2. Create a configuration file, copy the terminal to the terminal
 
-> [!WARNING] 
+> [!WARNING]
 >
-> 如果您的CAN速率为1M，请将：`` bitrate 500000`` 中的``500000``修改为``1000000``
+> If your CAN rate is 1M, please change bitrate 500000 中国500000 to 1000000
 
 ```bash
 sudo /bin/sh -c "cat > /etc/network/interfaces.d/can0" << EOF
 allow-hotplug can0
 iface can0 can static
-    bitrate 500000
-    up ifconfig \$IFACE txqueuelen 1024
+     bit rate 500000
+     up ifconfig \$IFACE txqueuelen 1024
 EOF
 ```
 
 > [!TIP]
-> 测试发现在部分设备中无法开机自动启用CAN，所以建议都执行下面操作
+> 电影电影在分计管理中时间开机电影电视CAN，二教记都都设计电视手机
 
-1. 开机自动启用CAN
+1. 开机automatically enable CAN
 
 ```bash
 sudo wget https://cdn.mellow.klipper.cn/shell/can-enable -O /usr/bin/can-enable > /dev/null 2>&1 && sudo chmod +x /usr/bin/can-enable || echo "The operation failed"
@@ -70,46 +70,46 @@ sudo wget https://cdn.mellow.klipper.cn/shell/can-enable -O /usr/bin/can-enable 
 sudo cat /etc/rc.local | grep "exit 0" > /dev/null || sudo sed -i '$a\exit 0' /etc/rc.local
 ```
 
-> [!WARNING] 
+> [!WARNING]
 >
-> 如果您的CAN速率为1M，请将：`` can0 -b 500000`` 中的``500000``修改为``1000000``
+> If the CAN speed is 1M, please change it to ``can0 -b 500000'' 中文500000'' to ``1000000''
 
 ```bash
 sudo sed -i '/^exit\ 0$/i \can-enable -d can0 -b 500000 -t 1024' /etc/rc.local
 ```
 
-4. 重启设备
+4. Restart the device
 
 ```bash
 sudo reboot
 ```
 
-5. USB转CAN模块在树莓派中无法即插即用
+5. USB转CAN module在树莓派中这是即电即用
 
-* 如果树莓派设备插拔过USB转CAN设备请重启设备或者执行下面的命令
-* 确保已完成步骤3
+* If the device is connected to a USB-CAN device, please restart the device or execute the following command
+* Make sure to complete step 3
 
-> [!WARNING] 
+> [!WARNING]
 >
-> 如果您的CAN速率为1M，请将：`` can0 -b 500000`` 中的``500000``修改为``1000000``
+> If the CAN speed is 1M, please change it to ``can0 -b 500000'' 中文500000'' to ``1000000''
 
 ```bash
 sudo can-enable -d can0 -b 500000 -t 1024
 ```
 
-### 3.2.3 连接UTOC
+### 3.2.3 connectionUTOC
 
-* 使用Type-c数据线连接树莓派和**FLY-UTOC**
-* 具体接线可查看文档 [连接UTOC](/board/fly_sb2040/sb2040line?id=_110-sb2040连接utoc "点击即可跳转")
+* Use Type-c data line connection 树莓派和**FLY-UTOC**
+* 商生接线可进行设计 [电视UTOC](/board/fly_sb2040/sb2040line?id=_110-sb2040 电影utoc "设计设计跳车")
 
-### 3.2.4 查看uuid
+### 3.2.4 View uuid
 
-* 执行下面的命令来查找所有已连接的CAN设备
+* Execute the following command to find all connected CAN devices
 
 ```bash
 ~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0
 ```
 
-* 出现``Found canbus_uuid=11aa22bb33cc``则查找到设备ID
-* 其中``11aa22bb33cc``为设备UUID，可直接填入klipper配置文件
-* 如果没有出现ID或报错请认真阅读文档并检查接线
+* アプロ``Found canbus_uuid=11aa22bb33cc``
+* 份位``11aa22bb33cc`` is the device UUID，可电视塔入klipper configuration file
+* If you don't have an ID或报错请请语话语阅读上海上方法报线
