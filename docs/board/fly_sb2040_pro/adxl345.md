@@ -2,7 +2,7 @@
 
 ## 9.1 configuration
 
-configuration as follows：
+configuration as follows:
 
 ```cfg
 ##ADXL345 accelerometer
@@ -16,16 +16,16 @@ spi_software_miso_pin: sb2040:gpio2
 [resonance_tester]
 accel_chip: adxl345
 probe_points:
-     100, 100, 20 # This coordinate is the position you need to measure, generally for hot bed middle
+      100, 100, 20 # This coordinate is the position you need to measure, generally for hot bed middle
 ```
 
 > [!TIP]
-> 装设计计会用包最合校机最好
+> The design package is the best for school computers
 
 > [!TIP]
-> 此电视于``非FLY过电机``, if you are ``Fly-π`' or ``Gemini'' series, you don't need to execute it!!!
+> This TV is powered by ``Non-FLY motor'', if you are ``Fly-π'' or ``Gemini'' series, you don't need to execute it!!!
 
-依次方式下载三条设计以可以安装设计下载包。
+Download the three designs in sequence to install the design download package.
 
 ```bash
 sudo apt update
@@ -43,7 +43,7 @@ Please note that according to the CPU performance, it may take a lot of time, up
 
 ## 9.2 testing
 
-Modify the configuration and save it after restarting，enter the command on the console：
+Modify the configuration and save it after restarting, enter the command on the console:
 
 ```bash
 ACCELEROMETER_QUERY
@@ -55,13 +55,13 @@ If it appears, please check the connection and configuration, the normal output 
 
 X, Y, Z are all required before the test.
 
-The command of test X axis is as follows：
+The command of test X axis is as follows:
 
 ```bash
 TEST_RESONANCES AXIS=X
 ```
 
-The command of the test axis is as follows：
+The command of the test axis is as follows:
 
 ```bash
 TEST_RESONANCES AXIS=Y
@@ -80,11 +80,11 @@ probe_points: ...
 ## 9.3 Usage
 
 > [!TIP]
-> klipper support automatic calibration，在 calibration start前前安全和归位
+> klipper supports automatic calibration, safe and reset before calibration start
 
 * `SHAPER_CALIBRATE` executes this command and executes the printer to automatically calibrateX,Y
 * After the calibration is completed, perform `SAVE_CONFIG` and save the data
-* You can also use `SHAPER_CALIBRATE AXIS=X`来automatically calibrate one axis，
+* You can also use `SHAPER_CALIBRATE AXIS=X` to automatically calibrate one axis,
 * After each axis calibration is finished, you must first save the data in the next calibration
 
 ![ACCE](../../images/adv/accele/acc5.png ":no-zooom")
