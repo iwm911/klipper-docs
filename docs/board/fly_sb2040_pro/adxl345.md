@@ -1,11 +1,11 @@
-# 9. 加速度计的使用
+# 9. Use of acceleration
 
-## 9.1 配置
+## 9.1 configuration
 
-配置如下：
+configuration as follows：
 
 ```cfg
-##ADXL345加速度计
+##ADXL345 accelerometer
 [adxl345]
 cs_pin: sb2040:gpio1
 spi_software_sclk_pin: sb2040:gpio0
@@ -16,16 +16,16 @@ spi_software_miso_pin: sb2040:gpio2
 [resonance_tester]
 accel_chip: adxl345
 probe_points:
-    100, 100, 20  # 此坐标为你需要测量的位置，一般为热床中间
+     100, 100, 20 # This coordinate is the position you need to measure, generally for hot bed middle
 ```
 
 > [!TIP]
-> 装加速度计依赖包安装方法如下
+> 装设计计会用包最合校机最好
 
 > [!TIP]
-> 此步骤使用于 `非FLY上位机`，如果您为`Fly-π`或者`Gemini`系列则无需执行！！！
+> 此电视于``非FLY过电机``, if you are ``Fly-π`' or ``Gemini'' series, you don't need to execute it!!!
 
-依次执行以下三条命令以安装加速度计依赖包。
+依次方式下载三条设计以可以安装设计下载包。
 
 ```bash
 sudo apt update
@@ -39,54 +39,54 @@ sudo apt install python3-numpy python3-matplotlib libatlas-base-dev
 ~/klippy-env/bin/pip install matplotlib numpy
 ```
 
-请注意，根据 CPU 的性能，可能需要*很多*时间，最多 10-20 分钟。请耐心等待完成 安装。在某些情况下，如果主板的 RAM 太少 安装可能会失败。
+Please note that according to the CPU performance, it may take a lot of time, up to 10-20 minutes.
 
-## 9.2 测试
+## 9.2 testing
 
-修改配置并保存重启后，在控制台输入指令：
+Modify the configuration and save it after restarting，enter the command on the console：
 
 ```bash
 ACCELEROMETER_QUERY
 ```
 
-如果出现报错请检查接线及配置，正常的输出如下图。出现下图中的输出后，便可以进行共振测量了。
+If it appears, please check the connection and configuration, the normal output is as follows.
 
 <img src="../../images/adv/accele/acc4.png" alt="ACCE" title=":no-zooom" style="zoom:90%;" />
 
-测试前需要将X，Y，Z全部归位。
+X, Y, Z are all required before the test.
 
-测试X轴的命令如下：
+The command of test X axis is as follows：
 
 ```bash
 TEST_RESONANCES AXIS=X
 ```
 
-测试Y轴的命令如下：
+The command of the test axis is as follows：
 
 ```bash
 TEST_RESONANCES AXIS=Y
 ```
 
 > [!TIP]
-> 如果测试过程中打印机震动太剧烈请及时按紧急停止或发送``M112``来停止。过高的``accel_per_hz``会让振动变得剧烈，可以适当降低。
+> If during the test process, the printer is in a state of emergency.
 
 ```cfg
 [resonance_tester]
 accel_chip: adxl345
-accel_per_hz: 50  # 默认值为75
+accel_per_hz: 50 # Default value is 75
 probe_points: ...
 ```
 
-## 9.3 使用
+## 9.3 Usage
 
 > [!TIP]
-> klipper支持自动校准，在校准开始前记得全部归位
+> klipper support automatic calibration，在 calibration start前前安全和归位
 
-* `SHAPER_CALIBRATE`执行这个命令后打印机将开始自动校准X,Y
-* 在校准完成后执行`SAVE_CONFIG`来保存数据
-* 也可以使用`SHAPER_CALIBRATE AXIS=X`来自动校准一个轴，
-* 在每个轴校准结束后都要先保存数据在校准下一个
+* `SHAPER_CALIBRATE` executes this command and executes the printer to automatically calibrateX,Y
+* After the calibration is completed, perform `SAVE_CONFIG` and save the data
+* You can also use `SHAPER_CALIBRATE AXIS=X`来automatically calibrate one axis，
+* After each axis calibration is finished, you must first save the data in the next calibration
 
 ![ACCE](../../images/adv/accele/acc5.png ":no-zooom")
 
-* 校准过程可能会比较长，请耐心等待
+* The calibration process may take a while, please wait
